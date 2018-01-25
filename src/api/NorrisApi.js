@@ -15,3 +15,7 @@ const norrisApi = axios.create({
 export function getNorrisCategories() {
   return norrisApi.get('categories');
 }
+
+export function getNorrisJoke(category) {
+  return norrisApi.get('random?category='+category);
+}

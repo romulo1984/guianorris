@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
+import * as NorrisApi from '../api/NorrisApi';
 import {ChuckNorrisAction} from '../actions';
 
 class NorrisCategory extends Component {
@@ -11,7 +12,11 @@ class NorrisCategory extends Component {
   }
 
   handleOnClick(event){
-    console.log(this.props.categoryName)
+    NorrisApi.getNorrisJoke(this.props.categoryName)
+    .then(apiResponse => {
+      console.log(apiResponse.data);
+      this.props.setCurrentJoke(apiResponse.data)
+    });
   }
 
   render() {
@@ -25,8 +30,8 @@ class NorrisCategory extends Component {
 
 const mapDispatchToProps = function(dispatch, ownProps) {
   return {
-    setNorrisCategories: (categories) => {
-      return dispatch(ChuckNorrisAction.setNorrisCategories(categories));
+    setCurrentJoke: (currentJoke) => {
+      return dispatch(ChuckNorrisAction.setCurrentJoke(currentJoke));
     },
   };
 };
