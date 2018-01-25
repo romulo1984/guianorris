@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
+import NorrisCategory from './NorrisCategory';
 import {ChuckNorrisSelector} from '../selectors';
 
-import './GuiaNorris.css';
-
 class NorrisCategoriesList extends Component {
+  renderLoading(){
+    return <span>Loading...</span>
+  }
+
+  renderCategories(){
+    return this.props.norrisCategories.map((categoryName, index) => <NorrisCategory key={index} categoryName={categoryName} />);
+  }
+
   render() {
     return (
       <div className="norris-categories-list">
-        {this.props.norrisCategories.map(category => <p>{category}</p>)}
+        {this.props.norrisCategories && this.props.norrisCategories.length ? this.renderCategories() : this.renderLoading()}
       </div>
     );
   }

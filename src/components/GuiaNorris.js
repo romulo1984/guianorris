@@ -12,10 +12,7 @@ class GuiaNorris extends Component {
     super(props);
 
     NorrisApi.getNorrisCategories()
-    .then(apiResponse => {
-      this.props.setNorrisCategories(apiResponse.data);
-      console.log(apiResponse.data)
-    });
+    .then(apiResponse => this.props.setNorrisCategories(apiResponse.data));
   }
 
   render() {
