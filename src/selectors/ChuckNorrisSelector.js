@@ -1,0 +1,1 @@
+export const getNorrisCategories = state => state.chucknorris.categories;

@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+
+import * as NorrisApi from '../api/NorrisApi';
+import {ChuckNorrisAction} from '../actions';
 import NorrisCategoriesList from './NorrisCategoriesList';
+
 import './GuiaNorris.css';
 
 class GuiaNorris extends Component {
+  constructor(props){
+    super(props);
+
+    NorrisApi.getNorrisCategories()
+    .then(apiResponse => {
+      this.props.setNorrisCategories(apiResponse.data);
+      console.log(apiResponse.data)
+    });
+  }
+
   render() {
     return (
       <div className="guia-norris">
@@ -23,4 +38,12 @@ class GuiaNorris extends Component {
   }
 }
 
-export default GuiaNorris;
+const mapDispatchToProps = function(dispatch, ownProps) {
+  return {
+    setNorrisCategories: (categories) => {
+      return dispatch(ChuckNorrisAction.setNorrisCategories(categories));
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(GuiaNorris);

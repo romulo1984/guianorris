@@ -1,8 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Router, Route, browserHistory} from 'react-router';
 import './index.css';
-import GuiaNorris from './GuiaNorris';
+import GuiaNorris from './components/GuiaNorris';
+import NotFound from './components/NotFound';
 import registerServiceWorker from './registerServiceWorker';
+import {Provider} from 'react-redux';
 
-ReactDOM.render(<GuiaNorris />, document.getElementById('root'));
+import store from './store';
+
+// Provider is a top-level component that wrapps our entire application, including
+// the Router. We pass it a reference to the store so we can use react-redux's
+// connect() method for Component Containers.
+ReactDOM.render(
+  <Provider store={store}>
+    <Router history={browserHistory}>
+	    <Route path="/" component={GuiaNorris} />
+	    <Route path="*" component={NotFound} />
+	  </Router>
+  </Provider>,
+  document.getElementById('root'),
+);
 registerServiceWorker();
+
+
