@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import {Router, Route, browserHistory} from 'react-router';
 import './index.css';
 import GuiaNorris from './components/GuiaNorris';
-import NotFound from './components/NotFound';
 import registerServiceWorker from './registerServiceWorker';
 import {Provider} from 'react-redux';
 
@@ -15,8 +14,7 @@ import store from './store';
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
-	    <Route path="/" component={GuiaNorris} />
-	    <Route path="*" component={NotFound} />
+	    <Route path="*" component={GuiaNorris} />
 	  </Router>
   </Provider>,
   document.getElementById('root'),

@@ -15,8 +15,8 @@ class ChuckNorrisJoke extends Component {
   renderJoke(){
     return (
       <div className='chuck-norris-joke'>
-        <img src={this.props.currentJoke.icon_url} alt='' />
         <div className='chuck-norris-joke-value'>{this.props.currentJoke.value}</div>
+        <img src='norris.jpg' alt='' height='200px'/>
       </div>
     );
   }

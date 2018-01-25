@@ -21,7 +21,7 @@ class GuiaNorris extends Component {
       <div className="guia-norris">
         <div className="guia-norris-header">
           <h1 className="guia-norris-title">Welcome to Guia Norris</h1>
-          <h5>where Guia Bolso family follow Chuck Nurris</h5>
+          <h5>where Guia Bolso family follow Chuck Norris</h5>
         </div>
         <div className="guia-norris-content">
           <div className="guia-norris-content-left">
