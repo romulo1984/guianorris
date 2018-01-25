@@ -14,19 +14,15 @@ class ChuckNorrisJoke extends Component {
 
   renderJoke(){
     return (
-      <div>
-        <img src={this.props.currentJoke.icon_url} />
-        <div>{this.props.currentJoke.value}</div>
+      <div className='chuck-norris-joke'>
+        <img src={this.props.currentJoke.icon_url} alt='' />
+        <div className='chuck-norris-joke-value'>{this.props.currentJoke.value}</div>
       </div>
     );
   }
 
   render() {
-    return (
-      <div className="norris-joke">
-        {this.props.isLoading ? this.renderLoading() : (this.props.currentJoke ? this.renderJoke() : this.renderEmpty())}
-      </div>
-    );
+    return this.props.isLoading ? this.renderLoading() : (this.props.currentJoke ? this.renderJoke() : this.renderEmpty())
   }
 }
 

@@ -20,7 +20,6 @@
 }
 
 .guia-norris-content {
-
   -webkit-box-flex: 1 1 auto;
   -moz-box-flex: 1 1 auto;
   -webkit-flex: 1 1 auto;
@@ -44,4 +43,28 @@
 
 .guia-norris-content-left, .guia-norris-content-right {
   padding: 10px;
+}
+
+.norris-category{
+  cursor: pointer;
+}
+
+.norris-category:hover{
+  background-color: red;
+}
+
+.chuck-norris-joke{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.chuck-norris-joke-value{
+  -webkit-box-flex: 1 1 auto;
+  -moz-box-flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
 }

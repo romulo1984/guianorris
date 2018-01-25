@@ -13,11 +13,9 @@ class NorrisCategory extends Component {
 
   handleOnClick(event){
     this.props.setIsLoadingJoke();
+
     NorrisApi.getNorrisJoke(this.props.categoryName)
-    .then(apiResponse => {
-      console.log(apiResponse.data);
-      this.props.setCurrentJoke(apiResponse.data)
-    });
+    .then(apiResponse => this.props.setCurrentJoke(apiResponse.data));
   }
 
   render() {
