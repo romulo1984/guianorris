@@ -2,7 +2,8 @@ import {ChuckNorrisAction} from '../actions';
 
 export const initialChuckNorrisState = {
   categories: [],
-  currentJoke: {},
+  isLoadingJoke: false,
+  currentJoke: null,
 };
 
 const ChuckNorrisReducer = (state = initialChuckNorrisState, action) => {
@@ -14,8 +15,12 @@ const ChuckNorrisReducer = (state = initialChuckNorrisState, action) => {
       return Object.assign({}, state, {categories: action.categories});
     }
 
+    case ChuckNorrisAction.SET_IS_LOADING_JOKE: {
+      return Object.assign({}, state, {isLoadingJoke: true});
+    }
+
     case ChuckNorrisAction.SET_CURRENT_JOKE: {
-      return Object.assign({}, state, {currentJoke: action.joke});
+      return Object.assign({}, state, {currentJoke: action.joke, isLoadingJoke: false});
     }
 
     default: {

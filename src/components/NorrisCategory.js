@@ -12,6 +12,7 @@ class NorrisCategory extends Component {
   }
 
   handleOnClick(event){
+    this.props.setIsLoadingJoke();
     NorrisApi.getNorrisJoke(this.props.categoryName)
     .then(apiResponse => {
       console.log(apiResponse.data);
@@ -30,6 +31,9 @@ class NorrisCategory extends Component {
 
 const mapDispatchToProps = function(dispatch, ownProps) {
   return {
+    setIsLoadingJoke: () => {
+      return dispatch(ChuckNorrisAction.setIsLoadingJoke());
+    },
     setCurrentJoke: (currentJoke) => {
       return dispatch(ChuckNorrisAction.setCurrentJoke(currentJoke));
     },

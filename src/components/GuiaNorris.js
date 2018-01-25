@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import * as NorrisApi from '../api/NorrisApi';
 import {ChuckNorrisAction} from '../actions';
 import NorrisCategoriesList from './NorrisCategoriesList';
+import ChuckNorrisJoke from './ChuckNorrisJoke';
 
 import './GuiaNorris.css';
 
@@ -25,7 +26,9 @@ class GuiaNorris extends Component {
           <div className="guia-norris-content-left">
             <NorrisCategoriesList />
           </div>
-          <div className="guia-norris-content-right">Result</div>
+          <div className="guia-norris-content-right">
+            <ChuckNorrisJoke />
+          </div>
         </div>
         <div className="guia-norris-footer">
           Desenvolvido por Freddy Brasileiro.
