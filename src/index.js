@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, browserHistory} from 'react-router';
+import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import GuiaNorris from './components/GuiaNorris';
 import registerServiceWorker from './registerServiceWorker';

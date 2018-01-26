@@ -4,6 +4,7 @@ export const initialChuckNorrisState = {
   categories: [],
   isLoadingJoke: false,
   currentJoke: null,
+  activeCategory: ''
 };
 
 const ChuckNorrisReducer = (state = initialChuckNorrisState, action) => {
@@ -21,6 +22,10 @@ const ChuckNorrisReducer = (state = initialChuckNorrisState, action) => {
 
     case ChuckNorrisAction.SET_CURRENT_JOKE: {
       return Object.assign({}, state, {currentJoke: action.joke, isLoadingJoke: false});
+    }
+
+    case ChuckNorrisAction.SET_ACTIVE_CATEGORY: {
+      return Object.assign({}, state, {activeCategory: action.category});
     }
 
     default: {

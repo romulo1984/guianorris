@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import * as NorrisApi from '../api/NorrisApi';
 import {ChuckNorrisAction} from '../actions';
 
+import {ChuckNorrisSelector} from '../selectors';
+
 class NorrisCategory extends Component {
   constructor(props){
     super(props);
@@ -14,15 +16,17 @@ class NorrisCategory extends Component {
   handleOnClick(event){
     this.props.setIsLoadingJoke();
 
+    this.props.setActiveCategory(this.props.categoryName);
+
     NorrisApi.getNorrisJoke(this.props.categoryName)
     .then(apiResponse => this.props.setCurrentJoke(apiResponse.data));
   }
 
   render() {
     return (
-      <div className="norris-category" onClick={this.handleOnClick}>
+      <a href="#" className={`list-group-item list-group-item-action py-2 ${this.props.activeCategory == this.props.categoryName ? 'active' : ''}`} onClick={this.handleOnClick}>
         {this.props.categoryName}
-      </div>
+      </a>
     );
   }
 }
@@ -35,7 +39,16 @@ const mapDispatchToProps = function(dispatch, ownProps) {
     setCurrentJoke: (currentJoke) => {
       return dispatch(ChuckNorrisAction.setCurrentJoke(currentJoke));
     },
+    setActiveCategory: (category) => {
+      return dispatch(ChuckNorrisAction.setActiveCategory(category));
+    }
   };
 };
 
-export default connect(null, mapDispatchToProps)(NorrisCategory);
+const mapStateToProps = function(store, ownProps) {
+  return {
+    activeCategory: ChuckNorrisSelector.getActiveCategory(store),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NorrisCategory);

@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
+import ReactLoading from 'react-loading';
+
 import NorrisCategory from './NorrisCategory';
 import {ChuckNorrisSelector} from '../selectors';
 
 class NorrisCategoriesList extends Component {
   renderLoading(){
-    return <span>Loading...</span>
+    return (
+      <div className="card py-5">
+        <div className="card-body d-flex justify-content-center">
+          <ReactLoading type="spin" className="text-center" color="#ccc" delay={0}/>
+        </div>
+      </div>
+    )
   }
 
   renderCategories(){
@@ -15,7 +23,10 @@ class NorrisCategoriesList extends Component {
 
   render() {
     return (
-      <div className="norris-categories-list">
+      <div className="list-group">
+        <li className="list-group-item list-group-item-light">
+          <h4>Categories</h4>
+        </li>
         {this.props.norrisCategories && this.props.norrisCategories.length ? this.renderCategories() : this.renderLoading()}
       </div>
     );
